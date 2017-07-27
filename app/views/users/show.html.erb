@@ -1,0 +1,19 @@
+<h1> Welcome <%= @user.name %> </h1>
+
+<% if current_user.admin %>
+<h2>ADMIN</h2>
+<%= link_to 'Attractions', attractions_path %>
+<% end %>
+<p style="color: red"><%= flash[:message] %></p>
+<p> Name: <%= @user.name %></p>
+<br>
+<p> Tickets: <%= @user.tickets %> </p>
+<br>
+<p> Mood: <%= @user.mood %></p>
+<br>
+<p> Height: <%= @user.height %></p>
+<br>
+<%= link_to("Edit", edit_user_path) %>
+<br>
+<%= link_to("See attractions", attractions_path) %>
+<%= link_to("Log Out", logout_path, method: 'POST') %>

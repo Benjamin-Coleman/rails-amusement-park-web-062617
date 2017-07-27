@@ -1,0 +1,19 @@
+<h1> Attractions Listing </h1>
+<h3 style="color: red"><%= flash[:message] %></h3>
+<br>
+<% @attractions.each do |a| %>
+	<%= a.name %>
+	<%= a.tickets %>
+	<% if !current_user.admin %>
+	<%= link_to "Go on #{a.name}", attraction_path(a) %>
+	<% else %>
+	<%= link_to "Show #{a.name}", attraction_path(a) %>
+	<% end %>
+	
+	<br><br>
+<% end %>
+
+<% if current_user.admin %>
+
+<%= link_to('New Attraction', new_attraction_path) %>
+<% end %>
